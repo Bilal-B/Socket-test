@@ -45,6 +45,6 @@ function connectSDDP() {
 request.get({
     uri: 'http://localhost:9200/rmc/eventsOpta/_search?size=1000'
 }, function(err, res, body){
-    console.log(res)
+    console.log(JSON.parse(res))
 });
 
