@@ -42,7 +42,7 @@ function connectSDDP() {
     console.log(msg);
   }
 }
-request.get("localhost:9200/rmc/eventsOpta/_search?size=1000")
+request.get("http://localhost:9200/rmc/eventsOpta/_search?size=1000")
     .then(res => {
         console.log(res)
     }).catch(console.log(err))
