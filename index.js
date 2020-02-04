@@ -1,5 +1,6 @@
 const moment = require("moment")
 const WebSocket = require('ws');
+const request = require('request')
 
 function connectSDDP() {
   var outletObject = {
@@ -41,36 +42,8 @@ function connectSDDP() {
     console.log(msg);
   }
 }
+request.get("localhost:9200/rmc/eventsOpta/_search?size=1000")
+    .then(res => {
+        console.log(res)
+    }).catch(console.error)
 
-connectSDDP()
-
-"http://api.performfeeds.com/soccerdata/match/7vzjbeh98kgm12i8frsfl25x1?_rt=b&_fmt=json&_dlt=2020-02-03T010:00:00%2000:00"
-
-var match = [
-    {
-        "id": "ddsn6eyqw3t3j6h5vukrlvckq",
-        "coverageLevel": "13",
-        "date": "2020-10-04Z",
-        "time": "20:30:00Z",
-        "lastUpdated": "2020-02-04T04:30:19Z",
-        "description": "Sporting KC vs New York City",
-        "sport": {
-          "id": "289u5typ3vp4ifwh5thalohmq",
-          "name": "Soccer"
-        },
-        "ruleset": {
-          "id": "79plas4983031idr6vw83nuel",
-          "name": "Men"
-        },
-        "competition": {
-          "id": "287tckirbfj9nb8ar2k9r60vn",
-          "name": "MLS",
-          "competitionCode": "MLS",
-          "competitionFormat": "Domestic league",
-          "country": {
-            "id": "7hr2f89v44y65dyu9k92vprwn",
-            "name": "USA"
-          }
-        },
-    }
-]
