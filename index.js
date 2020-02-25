@@ -26,7 +26,7 @@ calendar.forEach(id => {
     })
   });
 })
-fs.writeFile("../pretty.json", JSON.stringify(contestant), (err) => {
+fs.writeFile("../../pretty.json", JSON.stringify(contestant), (err) => {
   if (err) throw err;
 });
 
