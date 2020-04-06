@@ -31,11 +31,18 @@ class Live {
     let i = 0;
     const int = setInterval(
       () => {
+        if(matchTmp.liveData.matchDetails.matchTime < 45) {
+          matchTmp.liveData.matchDetails.periodId = 1
+        } else if (matchTmp.liveData.matchDetails.matchTime > 45) {
+          matchTmp.liveData.matchDetails.periodId = 2
+        } else if (matchTmp.liveData.period[1] && matchTmp.liveData.matchDetails.matchTime == matchTmp.liveData.period[1].lengthMin + matchTmp.liveData.period[0].lengthMin ) {
+          matchTmp.liveData.matchDetails.periodId = 2
+        } else if (matchTmp.liveData.period[2] && matchTmp.liveData.matchDetails.matchTime == matchTmp.liveData.period[1].lengthMin + matchTmp.liveData.period[0].lengthMin + matchTmp.liveData.period[2].lengthMin )
         if (matchTmp.liveData.matchDetails.matchTime == 45 && i < 15) {
             i++;
             delete matchTmp.liveData.matchDetails.matchTime;
             console.log(i)
-            // this.emit("message", this.topic, JSON.stringify(matchTmp), metadata);
+             this.emit("message", this.topic, JSON.stringify(matchTmp), metadata);
             matchTmp.liveData.matchDetails.matchTime = 45;
         } else {
           var metadata = {
@@ -98,13 +105,13 @@ class Live {
           ) {
             clearInterval(int);
           }
-          console.log(matchTmp.liveData.matchDetails.matchTime);
-        //   console.log(match.liveData.matchDetails.matchLengthMin);
-          // this.logger.info("Read from TEST LIVE", matchTmp.length);
-          // this.emit("message", this.topic, JSON.stringify(match), metadata);
+          // console.log(matchTmp.liveData.matchDetails.matchTime);
+          // console.log(match.liveData.matchDetails.matchLengthMin);
+          this.logger.info("Read from TEST LIVE", matchTmp.length);
+          this.emit("message", this.topic, JSON.stringify(match), metadata);
         }
       },
-      100 * this.interval,
+      60000 * this.interval,
       this
     );
   }
