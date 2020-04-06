@@ -23,7 +23,7 @@ module.exports = /*#__PURE__*/function () {
     this.topic = "RAW_FILE_rmc_opta_soccer_api_performfeeds_com_soccerdata_testlive_7vzjbeh98kgm12i8frsfl25x1";
     this.logger = logger;
     this.interval = intervall;
-    this.tag = "_rmc_opta_soccer_";
+    this.tag = "rmc_opta_soccer";
 
     if (fs.lstatSync(path).isDirectory()) {
       var files = fs.readdirSync(path);
