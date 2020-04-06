@@ -29,16 +29,16 @@ module.exports = /*#__PURE__*/function () {
       var files = fs.readdirSync(path);
       files.forEach(function (file) {
         console.log(file);
-        this.Live(JSON.parse(fs.readFileSync(path + "/" + file)));
+        this.Start(JSON.parse(fs.readFileSync(path + "/" + file)));
       }, this);
     } else if (fs.lstatSync(path).isFile()) {
-      this.Live(JSON.parse(fs.readFileSync(path)));
+      this.Start(JSON.parse(fs.readFileSync(path)));
     }
   }
 
   _createClass(Live, [{
-    key: "Live",
-    value: function Live(match) {
+    key: "Start",
+    value: function Start(match) {
       var _this = this;
 
       var matchTmp = _.cloneDeep(match);
@@ -55,8 +55,13 @@ module.exports = /*#__PURE__*/function () {
         } else if (matchTmp.liveData.matchDetails.matchTime > 45) {
           matchTmp.liveData.matchDetails.periodId = 2;
         } else if (matchTmp.liveData.period[1] && matchTmp.liveData.matchDetails.matchTime == matchTmp.liveData.period[1].lengthMin + matchTmp.liveData.period[0].lengthMin) {
-          matchTmp.liveData.matchDetails.periodId = 2;
-        } else if (matchTmp.liveData.period[2] && matchTmp.liveData.matchDetails.matchTime == matchTmp.liveData.period[1].lengthMin + matchTmp.liveData.period[0].lengthMin + matchTmp.liveData.period[2].lengthMin) if (matchTmp.liveData.matchDetails.matchTime == 45 && i < 15) {
+          matchTmp.liveData.matchDetails.periodId = 3;
+        } else if (matchTmp.liveData.period[2] && matchTmp.liveData.matchDetails.matchTime == matchTmp.liveData.period[1].lengthMin + matchTmp.liveData.period[0].lengthMin + matchTmp.liveData.period[2].lengthMin) {
+          matchTmp.liveData.matchDetails.periodId = 4;
+        }
+
+        if (matchTmp.liveData.matchDetails.matchTime == 45 && i < 15) {
+          console.log("oui");
           i++;
           delete matchTmp.liveData.matchDetails.matchTime;
           console.log(i);
@@ -129,14 +134,13 @@ module.exports = /*#__PURE__*/function () {
 
           if (matchTmp.liveData.matchDetails.matchTime == match.liveData.matchDetails.matchLengthMin) {
             clearInterval(int);
-          } 
-          console.log(matchTmp.liveData.matchDetails.matchTime);
-          console.log(match.liveData.matchDetails.matchLengthMin);
-            this.logger.info("Read from TEST LIVE", matchTmp.length);
-            this.emit("message", this.topic, JSON.stringify(match), metadata);
+          }
 
+          _this.logger.info("Read from TEST LIVE", matchTmp.length);
+
+          _this.emit("message", _this.topic, JSON.stringify(match), metadata);
         }
-      }, 60000 * this.interval, this);
+      }, 600 * this.interval, this);
     }
   }]);
 
