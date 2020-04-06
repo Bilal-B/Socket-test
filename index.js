@@ -29,7 +29,7 @@ function TestLive(path, logger) {
 
 util.inherits(TestLive, events.EventEmitter);
 
-TestLive.prototype.run = function (match) {
+TestLive.prototype.Start = function (match) {
   var _this = this;
 
   var matchTmp = _.cloneDeep(match);
