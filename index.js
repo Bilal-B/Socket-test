@@ -136,7 +136,7 @@ module.exports = /*#__PURE__*/function () {
             clearInterval(int);
           }
 
-          _this.logger.info("Read from TEST LIVE", matchTmp.length);
+          _this.logger.info("Read from TEST LIVE", metadata);
 
           _this.emit("message", _this.topic, JSON.stringify(match), metadata);
         }
