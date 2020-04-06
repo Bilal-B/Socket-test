@@ -73,7 +73,7 @@ module.exports = /*#__PURE__*/function () {
           var metadata = {
             topic: _this.topic,
             url: "TESTLIVE",
-            size: matchTmp.length,
+            size: 93156,
             tag: _this.tag,
             content_type: "application/json;charset=UTF-8",
             type: "json",
