@@ -129,10 +129,11 @@ module.exports = /*#__PURE__*/function () {
 
           if (matchTmp.liveData.matchDetails.matchTime == match.liveData.matchDetails.matchLengthMin) {
             clearInterval(int);
-          } // console.log(matchTmp.liveData.matchDetails.matchTime);
-          // console.log(match.liveData.matchDetails.matchLengthMin);
-          //   this.logger.info("Read from TEST LIVE", matchTmp.length);
-          //   this.emit("message", this.topic, JSON.stringify(match), metadata);
+          } 
+          console.log(matchTmp.liveData.matchDetails.matchTime);
+          console.log(match.liveData.matchDetails.matchLengthMin);
+            this.logger.info("Read from TEST LIVE", matchTmp.length);
+            this.emit("message", this.topic, JSON.stringify(match), metadata);
 
         }
       }, 60000 * this.interval, this);
