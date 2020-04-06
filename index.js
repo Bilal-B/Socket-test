@@ -44,9 +44,8 @@ module.exports = /*#__PURE__*/function (_EventEmitter) {
 
     _this.logger = logger;
     _this.topic = "RAW_FILE_rmc_opta_soccer_api_performfeeds_com_soccerdata_testlive_7vzjbeh98kgm12i8frsfl25x1";
-    _this.logger = logger;
     _this.interval = intervall;
-    _this.tag = "_rmc_opta_soccer_";
+    _this.tag = "rmc_opta_soccer";
 
     if (fs.lstatSync(path).isDirectory()) {
       var files = fs.readdirSync(path);
@@ -88,7 +87,7 @@ module.exports = /*#__PURE__*/function (_EventEmitter) {
         if (matchTmp.liveData.matchDetails.matchTime == 45 && i < 15) {
           i++;
           delete matchTmp.liveData.matchDetails.matchTime;
-          
+
           _this2.emit("message", _this2.topic, JSON.stringify(matchTmp), metadata);
 
           matchTmp.liveData.matchDetails.matchTime = 45;
